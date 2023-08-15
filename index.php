@@ -1,45 +1,21 @@
 <?php
-    echo "<h1 style='margin-top:40px;text-align:center;'> Valid Parenthesis </h1>";
+    echo "<h1 style='margin-top:40px;text-align:center;'> Single Number </h1>";
 
-    function validParenthesis($s)
+    function singleNumber($array)
     {
-        $s_stack = [];
-        for($i = 0; $i < strlen($s); $i++)
+        $a = 0;
+        foreach($array as $val)
         {
-            if(count($s_stack) > 0 && $s[$i] == ')' && $s_stack[count($s_stack) - 1] == '(')
-            {
-                array_pop($s_stack);
-            }elseif(count($s_stack) > 0 && $s[$i] == '}' && $s_stack[count($s_stack) - 1] == '{')
-            {
-                array_pop($s_stack);
-            }elseif(count($s_stack) > 0 && $s[$i] == ']' && $s_stack[count($s_stack) - 1] == '[')
-            {
-                array_pop($s_stack);
-            }else{
-                array_push($s_stack, $s[$i]);   
-            }
-
+            $a = $a ^ $val;
         }
 
-        if(count($s_stack) > 0)
-        {
-            return false;
-        }
-        return true;
-    }
+        return $a;
+    }   
 
-    // Example 1 : ()
-    // Example 2 : ()[]{}
-    // Example 3 : (]
+    // Example 1 : [2, 3, 2, 4, 4]
+    // Example 2 : [4, 5, 9, 5, 4, 2, 10, 2, 10]
     
-    // Custom Example 1 : [(]{}]()[]{)}
-    // Custom Example 1 : [({}[()])]
-    // Custom Example 1 : [(){}[]((]
-    
-    if (validParenthesis("[(){}[]((]"))
-    {
-        echo "True";
-    }else{
-        echo "False";
-    }
+    $result = singleNumber($array = [4, 5, 9, 5, 4, 2, 10, 2, 10]);
+
+    echo $result;
 ?>
