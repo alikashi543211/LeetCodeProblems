@@ -6,6 +6,7 @@
         $a = 0;
         foreach($array as $val)
         {
+            // XOR Operator : https://xor.pw/#
             $a = $a ^ $val;
         }
 
